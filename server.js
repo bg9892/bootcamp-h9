@@ -113,6 +113,30 @@ async function addEmployee() {
     });
 }
 
-function updateEmployeeRole() {
-
+async function updateEmployeeRole() {
+  inquirer
+    .prompt([
+      {
+        name: "firstName",
+        type: "input",
+        message: "What is the employee's first name?"
+      },
+      {
+        name: "lastName",
+        type: "input",
+        message: "What is the employee's last name?"
+      },
+      {
+        name: "role",
+        type: "input",
+        message: "What is the employee's new role?"
+      }
+    ])
+    .then(async function (answer) {
+      console.log(answer.role);
+      const roleID = await queryAsync(`SELECT role_id FROM employee WHERE first_name = '${answer.firstName}' AND last_name = '${answer.lastName}'`);
+      const query = `UPDATE role SET title = '${answer.role}' WHERE id = '${roleID[0].role_id}'`;
+      await queryAsync(query);
+      startQuestions();
+    })
 }
