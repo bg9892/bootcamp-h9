@@ -57,7 +57,7 @@ function startQuestions() {
 }
 
 function employees() {
-  let query = "SELECT employee.first_name, employee.last_name, role.title, role.salary, department.name ";
+  let query = "SELECT employee.first_name, employee.last_name, role.title, role.salary, department.department ";
   query += "FROM employee INNER JOIN role ON employee.role_id = role.id INNER JOIN department ON department.id = role.department_id"
   connection.query(query, function (err, res) {
     if (err) throw err;
@@ -102,7 +102,7 @@ async function addEmployee() {
       const queries = {
         employeeQuery: `INSERT INTO employee (first_name, last_name, role_id) VALUES ('${firstName}', '${lastName}', '${roleID.length + 1}')`,
         roleQuery: `INSERT INTO role (title, salary, department_id) VALUES ('${role}', '${salary}', '${departmentID.length + 1}')`,
-        departmentQuery: `INSERT INTO department (name) VALUES ('${department}')`
+        departmentQuery: `INSERT INTO department (department) VALUES ('${department}')`
       };
 
       await queryAsync(queries.employeeQuery);
