@@ -25,9 +25,9 @@ function startQuestions() {
       message: "What would you like to do?",
       choices: [
         "View All Employees",
-        "View Departments",
-        "View Roles",
+        "View Employees By Departments",
         "Add Employee",
+        "Remove Employee",
         "Update Employee Role"
       ]
     })
@@ -37,16 +37,16 @@ function startQuestions() {
           employees();
           break;
 
-        case "View Departments":
+        case "View Employees By Departments":
           departments();
-          break;
-
-        case "View roles":
-          roles();
           break;
 
         case "Add Employee":
           addEmployee();
+          break;
+
+        case "Remove Employee":
+          removeEmployee();
           break;
 
         case "Update Employee Role":
@@ -140,3 +140,32 @@ async function updateEmployeeRole() {
       startQuestions();
     })
 }
+
+
+// Still working on this------------------------------------------------------------------
+
+
+// async function removeEmployee() {
+//   const employee = await queryAsync(`SELECT first_name, last_name FROM employee`);
+//   let nameArray = [];
+
+//   for (var i = 0; i < employee.length; i++) {
+//     nameArray.push(employee[i].first_name + " " + employee[i].last_name);
+//   }
+//   await inquirer
+//     .prompt([
+//       {
+//         name: "name",
+//         type: "rawlist",
+//         message: "What is the employee's first name?",
+//         choices: nameArray
+//       }
+//     ])
+//     .then(async function (answer) {
+      
+//       console.log(test);
+//       const query = `DELETE FROM employee WHERE first_name = '${answer.firstName}' AND last_name = ${answer.lastName}`;
+//       // await queryAsync(query);
+//       startQuestions();
+//     });
+// }
