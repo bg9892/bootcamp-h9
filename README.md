@@ -16,7 +16,7 @@ npm install
 run npm start
 
 # Screenshots
-![Index](assets/screenshot.png)
+![Index](Assets/screenshot.png)
 
 
 
