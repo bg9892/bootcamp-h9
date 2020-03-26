@@ -25,9 +25,8 @@ function startQuestions() {
       message: "What would you like to do?",
       choices: [
         "View All Employees",
-        "View Employees By Departments",
         "Add Employee",
-        "Remove Employee",
+        // "Remove Employee",
         "Update Employee Role"
       ]
     })
@@ -37,17 +36,13 @@ function startQuestions() {
           employees();
           break;
 
-        case "View Employees By Departments":
-          departments();
-          break;
-
         case "Add Employee":
           addEmployee();
           break;
 
-        case "Remove Employee":
-          removeEmployee();
-          break;
+        // case "Remove Employee":
+        //   removeEmployee();
+        //   break;
 
         case "Update Employee Role":
           updateEmployeeRole();
@@ -162,7 +157,7 @@ async function updateEmployeeRole() {
 //       }
 //     ])
 //     .then(async function (answer) {
-      
+
 //       console.log(test);
 //       const query = `DELETE FROM employee WHERE first_name = '${answer.firstName}' AND last_name = ${answer.lastName}`;
 //       // await queryAsync(query);
